@@ -56,18 +56,13 @@
         @Html.DisplayFor(modelItem => item.Published)
     </td>
     <td>
-<<<<<<< Updated upstream
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Details", "Details", new { slug = item.Slug }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-=======
         @if (User.IsInRole("Admin"))
         {
             @Html.ActionLink("Edit", "Edit", new { id = item.Id })
             @Html.ActionLink("Delete", "Delete", new { id = item.Id }) 
         }
         @Html.ActionLink("Details", "Details", new { slug = item.Slug }) 
->>>>>>> Stashed changes
+
     </td>
 </tr>
 }
