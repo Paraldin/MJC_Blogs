@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.Raw("<div class=\"form-control\" id=\"editor\"></div> ")
+                <input id="editor" name="Body"/>
                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
             </div>
         </div>

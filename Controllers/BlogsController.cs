@@ -36,6 +36,7 @@ namespace MJC_Blogs.Controllers
             return View(blogs);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Blogs/Create
         public ActionResult Create()
         {

@@ -7,7 +7,10 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @if (User.IsInRole("Admin"))
+    {
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-info btn-sm" })
+    }
 </p>
 <table class="table">
     <tr>
@@ -38,7 +41,7 @@
         @Html.DisplayFor(modelItem => item.Title)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Body)
+        @Html.Raw(item.Body)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.MediaURL)
