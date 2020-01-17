@@ -1,40 +1,215 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MC Hammer Blog</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="~/Template/vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="~/Template/vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Custom icon font-->
+    <link rel="stylesheet" href="~/Template/css/fontastic.css">
+    <!-- Google fonts - Open Sans-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <!-- Fancybox-->
+    <link rel="stylesheet" href="~/Template/vendor/fancyapps2/fancybox/jquery.fancybox.min.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="~/Template/css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="~/Template/css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="~/Template/favicon.png">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Coding Misadventures", "Index", "Blogs", new { area = "" }, new { @class = "navbar-brand" })
+    <header class="header">
+        <!-- Main Navbar-->
+        <nav class="navbar navbar-expand-lg">
+            <div class="search-area">
+                <div class="search-area-inner d-flex align-items-center justify-content-center">
+                    <div class="close-btn"><i class="icon-close"></i></div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-8">
+                            <form action="#">
+                                <div class="form-group">
+                                    <input type="search" name="search" id="search" placeholder="What are you looking for?">
+                                    <button type="submit" class="submit"><i class="icon-search-1"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Blogs", "Index", "Blogs")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="container">
+                <!-- Navbar Brand -->
+                <div class="navbar-header d-flex align-items-center justify-content-between">
+                    <!-- Navbar Brand -->
+                    <a href="@Url.Action("Index")" class="navbar-brand">MC Hammer Blog</a>
+                    <!-- Toggle Button-->
+                    <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
+                </div>
+                <!-- Navbar Menu -->
+                <div id="navbarcollapse" class="collapse navbar-collapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index")" class="nav-link active ">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="blog.html" class="nav-link ">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="post.html" class="nav-link ">Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    @RenderBody()
+    <!-- Newsletter Section-->
+    @*<section class="newsletter no-padding-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Subscribe to Newsletter</h2>
+                        <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-holder">
+                            <form action="#">
+                                <div class="form-group">
+                                    <input type="email" name="email" id="email" placeholder="Type your email address">
+                                    <button type="submit" class="submit">Subscribe</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>*@
+    <!-- Gallery Section-->
+    @*<section class="gallery no-padding">
+            <div class="row">
+                <div class="mix col-lg-3 col-md-3 col-sm-6">
+                    <div class="item">
+                        <a href="img/gallery-1.jpg" data-fancybox="gallery" class="image">
+                            <img src="img/gallery-1.jpg" alt="..." class="img-fluid">
+                            <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="mix col-lg-3 col-md-3 col-sm-6">
+                    <div class="item">
+                        <a href="img/gallery-2.jpg" data-fancybox="gallery" class="image">
+                            <img src="img/gallery-2.jpg" alt="..." class="img-fluid">
+                            <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="mix col-lg-3 col-md-3 col-sm-6">
+                    <div class="item">
+                        <a href="img/gallery-3.jpg" data-fancybox="gallery" class="image">
+                            <img src="img/gallery-3.jpg" alt="..." class="img-fluid">
+                            <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="mix col-lg-3 col-md-3 col-sm-6">
+                    <div class="item">
+                        <a href="img/gallery-4.jpg" data-fancybox="gallery" class="image">
+                            <img src="img/gallery-4.jpg" alt="..." class="img-fluid">
+                            <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>*@
+
+    <!-- Latest Posts -->
+    <section class="latest-posts">
+        <div class="container">
+            <header>
+                <h2>Latest from the blog</h2>
+                <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </header>
+            <div class="row">
+                <div class="post col-md-4">
+                    <div class="post-thumbnail"><a href="post.html"><img src="~/Template/img/blog-1.jpg" alt="..." class="img-fluid"></a></div>
+                    <div class="post-details">
+                        <div class="post-meta d-flex justify-content-between">
+                            <div class="date">20 May | 2016</div>
+                            <div class="category"><a href="#">Business</a></div>
+                        </div><a href="post.html">
+                            <h3 class="h4">Ways to remember your important ideas</h3>
+                        </a>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    </section>
+    <!-- Page Footer-->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="logo">
+                        <h6 class="text-white">MC Hammer Blog</h6>
+                    </div>
+                    <div class="contact-details">
+                        <p>Email: <a href="mailto:info@company.com">Info@Company.com</a></p>
+                        <ul class="social-menu">
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-behance"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="menus d-flex">
+                        <ul class="list-unstyled">
+                            <li> <a href="#">My Account</a></li>
+                            <li> <a href="#">Add Listing</a></li>
+                            <li> <a href="#">Pricing</a></li>
+                            <li> <a href="#">Privacy &amp; Policy</a></li>
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li> <a href="#">Our Partners</a></li>
+                            <li> <a href="#">FAQ</a></li>
+                            <li> <a href="#">How It Works</a></li>
+                            <li> <a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="latest-posts">
+                        <a href="#">
+                            <div class="post d-flex align-items-center">
+                                <div class="image"><img src="~/Template/img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
+                                <div class="title"><strong>Hotels for all budgets</strong><span class="date last-meta">October 26, 2016</span></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript files-->
+    <script src="~/Template/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Template/vendor/popper.js/umd/popper.min.js"></script>
+    <script src="~/Template/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Template/vendor/jquery.cookie/jquery.cookie.js"></script>
+    <script src="~/Template/vendor/fancyapps2/fancybox/jquery.fancybox.min.js"></script>
+    <script src="~/Template/js/front.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

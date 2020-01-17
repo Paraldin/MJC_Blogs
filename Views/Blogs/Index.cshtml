@@ -4,67 +4,107 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<!-- Hero Section-->
+<section style="background: url(Template/img/hero.jpg); background-size: cover; background-position: center;" class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <h1>Mark Corum's Blog</h1><a href="#" class="hero-link">Discover More</a>
+            </div>
+        </div><a href="#" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
+    </div>
+</section>
 
-<p>
-    @if (User.IsInRole("Admin"))
-    {
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-info btn-sm" })
-    }
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Body)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MediaURL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Created)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Updated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Published)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Title)
-    </td>
-    <td>
-        @Html.Raw(item.Body)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.MediaURL)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Created)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Updated)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Published)
-    </td>
-    <td>
+<section class="featured-posts no-padding-top">
+    <div class="container">
+        <!-- Post-->
+        @foreach (var item in Model) {
+        <div class="row d-flex align-items-stretch">
+            <div class="text col-lg-7">
+                <div class="text-inner d-flex align-items-center">
+                    <div class="content">
+                        <header class="post-header">
+                            <div class="category"><a href="#">Business</a><a href="#">Technology</a></div><a href="post.html">
+                                <h2 class="h4">Alberto Savoia Can Teach You About Interior</h2>
+                            </a>
+                        </header>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                        <footer class="post-footer d-flex align-items-center">
+                            <a href="#" class="author d-flex align-items-center flex-wrap">
+                                <div class="avatar"><img src="~/Template/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
+                                <div class="title"><span>John Doe</span></div>
+                            </a>
+                            <div class="date"><i class="icon-clock"></i> @item.Created.Day @item.Created.ToString("MMMM"), @item.Created.ToString("yyyy")</div>
+                            <div class="comments"><i class="icon-comment"></i>12</div>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <div class="image col-lg-5"><img src="~/Template/img/featured-pic-1.jpeg" alt="..."></div>
+        </div>
+        }
+</div>
+</section>
+<!-- Post        -->
+@*<p>
         @if (User.IsInRole("Admin"))
         {
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) 
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-info btn-sm" })
         }
-        @Html.ActionLink("Details", "Details", new { slug = item.Slug }) 
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Body)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MediaURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Updated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Published)
+            </th>
+            <th></th>
+        </tr>
 
-    </td>
-</tr>
-}
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.Raw(item.Body)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MediaURL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Updated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Published)
+        </td>
+        <td>
+            @if (User.IsInRole("Admin"))
+            {
+                <a href="@Url.Action("Edit", "Blogs" , new { id = item.Id })" class="btn btn-info" style="margin-right: 4px;">Edit</a>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            }
+            @Html.ActionLink("Details", "Details", new { slug = item.Slug })
 
-</table>
+        </td>
+    </tr>
+    }
+
+    </table>*@
