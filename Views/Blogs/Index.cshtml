@@ -15,11 +15,6 @@
     </div>
 </section>
 
-        @if (User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-info btn-sm" })
-        }
-        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-info btn-sm" })
         <!-- Post-->
 <section class="featured-posts no-padding-top">
     <div class="container">
@@ -27,7 +22,7 @@
             int counter = 0;
             foreach (var item in Model)
             {
-                string blogBody = item.Body;
+                string blogBody = item.Snippet;
                 string snippet = blogBody.Substring(0, blogBody.Length > 80 ? 80 : blogBody.Length);
                 counter++;
                 if (counter % 2 != 0)
@@ -41,7 +36,7 @@
                                             <h2 class="h4">@item.Title</h2>
                                         </a>
                                     </header>
-                                    <p>@Html.Raw(item.Snippet)<a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" style="color:blue">...</a></p>
+                                    <p>@Html.Raw(snippet)<a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" style="color:blue">...</a></p>
                                     <footer class="post-footer d-flex align-items-center">
                                         <a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="~/Template/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
@@ -59,19 +54,19 @@
                 else
                 {
                     <div class="row d-flex align-items-stretch">
-                        <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" class="image col-lg-5"><img src="/Template/img/featured-pic-2.jpeg" alt="..."></a>
+                        <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" class="image col-lg-5" style="min-height:304px;"><img src="/Template/img/featured-pic-2.jpeg" alt="..."></a>
                         <div class="text col-lg-7">
                             <div class="text-inner d-flex align-items-center">
                                 <div class="content">
                                     <header class="post-header">
-                                        <a href="post.html">
+                                        <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })">
                                             <h2 class="h4">@item.Title</h2>
                                         </a>
                                     </header>
-                                    <p><p>@Html.Raw(item.Snippet)<a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" style="color:blue">...</a></p></p>
+                                    <p>@Html.Raw(snippet)<a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" style="color:blue">...</a></p>
                                     <footer class="post-footer d-flex align-items-center">
                                         <a href="#" class="author d-flex align-items-center flex-wrap">
-                                            <div class="avatar"><img src="img/avatar-2.jpg" alt="..." class="img-fluid"></div>
+                                            <div class="avatar"><img src="/Template/img/avatar-2.jpg" alt="..." class="img-fluid"></div>
                                             <div class="title"><span>Mark Corum</span></div>
                                         </a>
                                         <div class="date"><i class="icon-clock"></i>@item.Created.Day @item.Created.ToString("MMMM"), @item.Created.ToString("yyyy")</div>

@@ -20,6 +20,12 @@ namespace MJC_Blogs
                 );
 
             routes.MapRoute(
+                name: "Home",
+                url: "Home",
+                defaults: new { controller = "Blogs", action = "Index" }
+                );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Blogs", action = "Index", id = UrlParameter.Optional }

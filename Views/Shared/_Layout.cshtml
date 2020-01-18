@@ -47,7 +47,7 @@
                 <!-- Navbar Brand -->
                 <div class="navbar-header d-flex align-items-center justify-content-between">
                     <!-- Navbar Brand -->
-                    <a href="@Url.Action("Index")" class="navbar-brand">MC Hammer Blog</a>
+                    <a href="@Url.Action("Index", "Blogs")" class="navbar-brand">MC Hammer Blog</a>
                     <!-- Toggle Button-->
                     <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
                 </div>
@@ -55,16 +55,27 @@
                 <div id="navbarcollapse" class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="@Url.Action("Index")" class="nav-link active ">Home</a>
+                            <a href="@Url.Action("Index", "Blogs")" class="nav-link active ">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="blog.html" class="nav-link ">Blog</a>
+                            @if (User.IsInRole("Admin") || User.IsInRole("Moderator") || User.IsInRole("Guest"))
+                            {
+                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log off</a>
+                                }
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Login", "Account")" class="nav-link ">Log-In</a>
+                            }
                         </li>
                         <li class="nav-item">
-                            <a href="post.html" class="nav-link ">Post</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link ">Contact</a>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("New Post", "Create", null, new { @class = "nav-link" })
+                            }
                         </li>
                     </ul>
                     <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
@@ -133,7 +144,7 @@
         </section>*@
 
     <!-- Latest Posts -->
-    <section class="latest-posts">
+    @*<section class="latest-posts">
         <div class="container">
             <header>
                 <h2>Latest from the blog</h2>
@@ -154,7 +165,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>*@
     <!-- Page Footer-->
     <footer class="main-footer">
         <div class="container">
@@ -179,13 +190,9 @@
                         <ul class="list-unstyled">
                             <li> <a href="#">My Account</a></li>
                             <li> <a href="#">Add Listing</a></li>
-                            <li> <a href="#">Pricing</a></li>
-                            <li> <a href="#">Privacy &amp; Policy</a></li>
                         </ul>
                         <ul class="list-unstyled">
-                            <li> <a href="#">Our Partners</a></li>
                             <li> <a href="#">FAQ</a></li>
-                            <li> <a href="#">How It Works</a></li>
                             <li> <a href="#">Contact</a></li>
                         </ul>
                     </div>
