@@ -53,6 +53,7 @@ namespace MJC_Blogs.Controllers
             if (ModelState.IsValid)
             {
                 var Slug = StringUtilities.URLFriendly(blogs.Title);
+                var Snip = SnippetStripper.StripTagsCharArray(blogs.Body);
                 if (String.IsNullOrWhiteSpace(Slug))
                 {
                     ModelState.AddModelError("Title", "Invalid title");
@@ -64,6 +65,7 @@ namespace MJC_Blogs.Controllers
                     return View(blogs);
                 }
 
+                blogs.Snippet = Snip;
                 blogs.Slug = Slug;
                 blogs.Created = DateTimeOffset.Now;
                 db.Posts.Add(blogs);

@@ -21,6 +21,7 @@ namespace MJC_Blogs.Models
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset? Updated { get; set; }
         public bool Published { get; set; }
+        public string Snippet { get; set; }
 
         public virtual ICollection<Comments> Comments { get; set; }
     }

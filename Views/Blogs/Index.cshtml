@@ -37,11 +37,11 @@
                             <div class="text-inner d-flex align-items-center">
                                 <div class="content">
                                     <header class="post-header">
-                                        <a href="post.html">
+                                        <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })">
                                             <h2 class="h4">@item.Title</h2>
                                         </a>
                                     </header>
-                                    <p>@snippet</p>
+                                    <p>@Html.Raw(item.Snippet)<a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" style="color:blue">...</a></p>
                                     <footer class="post-footer d-flex align-items-center">
                                         <a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="~/Template/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
@@ -68,7 +68,7 @@
                                             <h2 class="h4">@item.Title</h2>
                                         </a>
                                     </header>
-                                    <p>@Html.Raw(item.Body)</p>
+                                    <p><p>@Html.Raw(item.Snippet)<a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" style="color:blue">...</a></p></p>
                                     <footer class="post-footer d-flex align-items-center">
                                         <a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="img/avatar-2.jpg" alt="..." class="img-fluid"></div>
