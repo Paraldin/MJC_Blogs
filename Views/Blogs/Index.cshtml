@@ -15,7 +15,7 @@
     </div>
 </section>
 
-        <!-- Post-->
+<!-- Post-->
 <section class="featured-posts no-padding-top">
     <div class="container">
         @{
@@ -50,12 +50,15 @@
                         </div>
                         <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" class="image col-lg-5" style="min-height:304px;"><img src="@item.MediaURL" alt="..." class="border-weirdify"></a>
                     </div>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    }
                 }
                 else
                 {
                     <div class="row d-flex align-items-stretch">
-                        <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" class="image col-lg-5" style="min-height:304px;"><img src="@item.MediaURL" alt="..."></a>
+                        <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" class="image col-lg-5" style="min-height:304px;"><img src="@item.MediaURL" alt="..." class="border-weirdify"></a>
                         <div class="text col-lg-7">
                             <div class="text-inner d-flex align-items-center">
                                 <div class="content">
@@ -77,7 +80,10 @@
                             </div>
                         </div>
                     </div>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    }
                 }
             }
         }

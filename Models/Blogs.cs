@@ -23,6 +23,8 @@ namespace MJC_Blogs.Models
         public bool Published { get; set; }
         public string Snippet { get; set; }
 
+        public virtual ApplicationUser Author { get; set; }
+
         public virtual ICollection<Comments> Comments { get; set; }
     }
 }
