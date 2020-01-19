@@ -1324,6 +1324,7 @@ main.posts-listing .post-footer {
 
 .blog-post .post-thumbnail img {
   width: 100%;
+  max-height: 400px;
   margin-bottom: 10px;
 }
 
@@ -2519,6 +2520,11 @@ a.bg-dark:focus, a.bg-dark:hover {
 
 .border-dark {
   border-color: #343a40 !important;
+}
+
+.border-weirdify {
+    border: solid 4px rgba(232, 226, 226, 0.45);
+    border-radius: 5%;
 }
 
 .text-primary {
