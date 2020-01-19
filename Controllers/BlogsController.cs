@@ -48,13 +48,12 @@ namespace MJC_Blogs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Body,MediaURL,Published, AuthorId")] Blogs blogs)
+        public ActionResult Create([Bind(Include = "Id,Title,Body,MediaURL,Published")] Blogs blogs)
         {
             if (ModelState.IsValid)
             {
                 var Slug = StringUtilities.URLFriendly(blogs.Title);
                 var Snip = SnippetStripper.StripTagsCharArray(blogs.Body);
-                var Author = 
                 if (String.IsNullOrWhiteSpace(Slug))
                 {
                     ModelState.AddModelError("Title", "Invalid title");
