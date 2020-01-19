@@ -36,6 +36,20 @@ namespace MJC_Blogs.Controllers
             return View(blogs);
         }
 
+        public ActionResult ImgTest(string id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ApplicationUser Author = db.Users.Include(s => s.Files).SingleOrDefault(s => s.Id == id);
+            if(Author == null)
+            {
+                return HttpNotFound();
+            }
+            return View(Author);
+        }
+
         [Authorize(Roles = "Admin")]
         // GET: Blogs/Create
         public ActionResult Create()
@@ -53,6 +67,10 @@ namespace MJC_Blogs.Controllers
             if (ModelState.IsValid)
             {
                 var Slug = StringUtilities.URLFriendly(blogs.Title);
+<<<<<<< Updated upstream
+=======
+                var Snip = SnippetStripper.StripTagsCharArray(blogs.Body);
+>>>>>>> Stashed changes
                 if (String.IsNullOrWhiteSpace(Slug))
                 {
                     ModelState.AddModelError("Title", "Invalid title");
@@ -106,13 +124,13 @@ namespace MJC_Blogs.Controllers
         }
 
         // GET: Blogs/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string slug)
         {
-            if (id == null)
+            if (slug == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Blogs blogs = db.Posts.Find(id);
+            Blogs blogs = db.Posts.FirstOrDefault(p => p.Slug == slug);
             if (blogs == null)
             {
                 return HttpNotFound();

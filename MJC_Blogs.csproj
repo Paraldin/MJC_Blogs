@@ -169,7 +169,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogsController.cs" />
+<<<<<<< Updated upstream
     <Compile Include="Controllers\CommentsController.cs" />
+=======
+    <Compile Include="Controllers\FileController.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -180,6 +184,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Blogs.cs" />
     <Compile Include="Models\Comments.cs" />
+    <Compile Include="Models\file.cs" />
+    <Compile Include="Models\FileType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -375,6 +381,7 @@
     <Content Include="Scripts\tinymce\skins\ui\oxide\fonts\tinymce-mobile.woff" />
     <Content Include="Scripts\tinymce\skins\ui\oxide-dark\fonts\tinymce-mobile.woff" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+<<<<<<< Updated upstream
     <Content Include="Views\Comments\Create.cshtml" />
     <Content Include="Views\Comments\Delete.cshtml" />
     <Content Include="Views\Comments\Details.cshtml" />
@@ -383,6 +390,30 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+=======
+    <Content Include="Template\fonts\blog.eot" />
+    <Content Include="Template\fonts\blog.ttf" />
+    <Content Include="Template\fonts\blog.woff" />
+    <Content Include="Template\icons-reference\fonts\blog.eot" />
+    <Content Include="Template\icons-reference\fonts\blog.ttf" />
+    <Content Include="Template\icons-reference\fonts\blog.woff" />
+    <Content Include="Template\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Template\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Template\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Template\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Template\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Template\vendor\jquery.cookie\component.json" />
+    <Content Include="Template\vendor\jquery.cookie\cookie.jquery.json" />
+    <Content Include="Template\vendor\popper.js\umd\poppper.js.flow" />
+    <Content Include="Views\Blogs\ImgTest.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Template\vendor\font-awesome\less\" />
+    <Folder Include="Template\vendor\font-awesome\scss\" />
+    <Folder Include="Views\File\" />
+    <Folder Include="Views\Home\" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

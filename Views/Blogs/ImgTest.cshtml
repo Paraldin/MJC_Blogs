@@ -1,0 +1,27 @@
+﻿@model MJC_Blogs.Models.Blogs
+
+@{
+    ViewBag.Title = "ImgTest";
+}
+
+<h2>ImgTest</h2>
+
+<div>
+    @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
+    {
+        <div>Avatar</div>
+        <div><img src="~/file?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" /></div>
+    }
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+    <script type="text/javascript">$(function () { tinymce.init({ selector: '#editor' }); });</script>
+}

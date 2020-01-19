@@ -23,5 +23,7 @@ namespace MJC_Blogs.Models
         public bool Published { get; set; }
 
         public virtual ICollection<Comments> Comments { get; set; }
+
+        public virtual ICollection<file> Files { get; set; }
     }
 }

@@ -26,6 +26,7 @@ namespace MJC_Blogs.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public virtual ICollection<file> Files { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -41,5 +42,6 @@ namespace MJC_Blogs.Models
         }
         public DbSet<Blogs> Posts { get; set; }
         public DbSet<Comments> Comment { get; set; }
+        public DbSet<file> Files { get; set; }
     }
 }
