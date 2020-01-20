@@ -53,6 +53,7 @@
                     if (User.IsInRole("Admin"))
                     {
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @style = "margin-left: 10px;" })
                     }
                 }
                 else
@@ -83,6 +84,7 @@
                     if (User.IsInRole("Admin"))
                     {
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @style = "margin-left: 10px;" })
                     }
                 }
             }
