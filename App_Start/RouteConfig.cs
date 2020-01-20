@@ -15,7 +15,7 @@ namespace MJC_Blogs
 
             routes.MapRoute(
                 name: "NewSlug",
-                url: "Blog/Details/{slug}",
+                url: "BlogPost/Details/{slug}",
                 defaults: new { controller = "Blogs", action = "details", slug = UrlParameter.Optional }
                 );
 

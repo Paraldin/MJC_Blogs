@@ -16,5 +16,6 @@ namespace MJC_Blogs.Models
         public string UpdateReason { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
+        public virtual Blogs Posts { get; set; }
     }
 }

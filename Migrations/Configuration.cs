@@ -1,4 +1,4 @@
-namespace MJC_Blogs.Migrations
+ namespace MJC_Blogs.Migrations
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
