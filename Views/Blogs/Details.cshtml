@@ -10,7 +10,12 @@
         <main class="post blog-post col-lg-8">
             <div class="container">
                 <div class="post-single">
-                    <div class="post-thumbnail"><img src="@Model.MediaURL" alt="..." class="img-fluid"></div>
+                    <div class="post-thumbnail">
+                        @if (Model.MediaURL != null)
+                        {
+                            <img src="@Model.MediaURL" alt="..." class="img-fluid">
+                        }
+                    </div>
                     <div class="post-details">
                         <h1>@Model.Title</h1>
                         <div class="post-footer d-flex align-items-center flex-column flex-sm-row">

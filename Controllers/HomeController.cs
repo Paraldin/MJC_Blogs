@@ -27,7 +27,7 @@ namespace MJC_Blogs.Controllers
         public ActionResult Contact()
         {
             EmailModel model = new EmailModel();
-            return View();
+            return View(model);
         }
         
         //POST
@@ -50,7 +50,7 @@ namespace MJC_Blogs.Controllers
                         Destination = "MarkCorumDev@gmail.com"
                     };
                     await svc.SendAsync(msg);
-                    return View();
+                    return RedirectToAction("Index","Blogs",null);
                 }
                 catch (Exception ex)
                 {

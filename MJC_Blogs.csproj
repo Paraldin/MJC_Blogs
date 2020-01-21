@@ -175,6 +175,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ImageUploadValidator.cs" />
     <Compile Include="Helpers\SnippetStripper.cs" />
     <Compile Include="Helpers\StringUtilities.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -457,11 +458,14 @@
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="private.config" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Account\ConfirmationSent.cshtml" />
+    <None Include="Views\Account\ResendEmailConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Template\vendor\font-awesome\less\" />
     <Folder Include="Template\vendor\font-awesome\scss\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

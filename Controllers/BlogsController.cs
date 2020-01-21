@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -48,7 +49,7 @@ namespace MJC_Blogs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Body,MediaURL,Published")] Blogs blogs)
+        public ActionResult Create([Bind(Include = "Id,Title,Body,MediaURL,Published")] Blogs blogs, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
@@ -65,6 +66,13 @@ namespace MJC_Blogs.Controllers
                     return View(blogs);
                 }
 
+                if (ImageUploadValidator.IsWebFriendlyImage(image))
+                {
+                    var fileName = Path.GetFileName(image.FileName);
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
+                    blogs.MediaURL = "/Uploads/" + fileName;
+                }
+
                 blogs.Snippet = Snip;
                 blogs.Slug = Slug;
                 blogs.Created = DateTimeOffset.Now;
@@ -75,6 +83,11 @@ namespace MJC_Blogs.Controllers
 
             return View(blogs);
         }
+
+   
+            
+                
+        
 
         // GET: Blogs/Edit/5
         public ActionResult Edit(int? id)
@@ -96,10 +109,17 @@ namespace MJC_Blogs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Slug,Body,MediaURL,Published")] Blogs blogs)
+        public ActionResult Edit([Bind(Include = "Id,Title,Slug,Body,MediaURL,Published")] Blogs blogs, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                if (ImageUploadValidator.IsWebFriendlyImage(image))
+                {
+                    var fileName = Path.GetFileName(image.FileName);
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
+                    blogs.MediaURL = "/Uploads/" + fileName;
+                }
+
                 db.Entry(blogs).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
