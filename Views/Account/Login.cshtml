@@ -38,13 +38,15 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Log in" class="btn btn-success" />
+                        <div class="col-md-4">
+                            <input type="submit" value="Log in" class="btn btn-success btn-block" />
                         </div>
                     </div>
-                    <p>
-                        @Html.ActionLink("Register as a new user", "Register", null, new { @class = "btn btn-info"})
-                    </p>
+                    <div class="col-md-8">
+                        <div class="col-md-8" style="padding-left:0px;">
+                        @Html.ActionLink("Register as a new user", "Register", null, new { @class = "btn"})
+                        </div>
+                    </div>
                     @* Enable this once you have account confirmation enabled for password reset functionality
                         <p>
                             @Html.ActionLink("Forgot your password?", "ForgotPassword")
@@ -52,11 +54,11 @@
                 }
             </section>
         </div>
-        <div class="col-md-4">
+        @*<div class="col-md-4">
             <section id="socialLoginForm">
                 @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.Return })
             </section>
-        </div>
+        </div>*@
     </div>
 </div>
 
