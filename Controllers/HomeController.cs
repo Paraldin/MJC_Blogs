@@ -39,14 +39,14 @@ namespace MJC_Blogs.Controllers
             {
                 try
                 {
-                    var body = "<p>Email From: <bold>{0}</bold>" + "({1})</p><p>Subject: Message:</p><p>{2}</p>";
+                    var body = "<p>Email From: <bold>{0}</bold>" + "({1})</p><p>Subject: {3} Message:</p><p>{2}</p>";
                     //model.Body = "This is a message from your blog site. The name and" + " the email of the contacting person is above.";
 
                     var svc = new EmailService();
                     var msg = new IdentityMessage()
                     {
-                        Subject = "Contact From Portfolio Site",
-                        Body = string.Format(body, model.FromName, model.FromEmail, model.Body),
+                        Subject = model.Subject,
+                        Body = string.Format(body, model.FromName, model.FromEmail, model.Body, model.Subject),
                         Destination = "MarkCorumDev@gmail.com"
                     };
                     await svc.SendAsync(msg);
