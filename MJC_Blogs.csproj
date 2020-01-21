@@ -181,6 +181,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Blogs.cs" />
     <Compile Include="Models\Comments.cs" />
+    <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -350,33 +351,9 @@
     <Content Include="Template\icons-reference\icons-reference.html" />
     <Content Include="Template\icons-reference\styles.css" />
     <Content Include="Template\img\avatar-1.jpg" />
-    <Content Include="Template\img\avatar-2.jpg" />
-    <Content Include="Template\img\avatar-3.jpg" />
-    <Content Include="Template\img\blog-1.jpg" />
-    <Content Include="Template\img\blog-2.jpg" />
-    <Content Include="Template\img\blog-3.jpg" />
-    <Content Include="Template\img\blog-post-1.jpeg" />
-    <Content Include="Template\img\blog-post-2.jpg" />
-    <Content Include="Template\img\blog-post-3.jpeg" />
-    <Content Include="Template\img\blog-post-4.jpeg" />
-    <Content Include="Template\img\divider-bg.jpg" />
     <Content Include="Template\favicon.ico" />
-    <Content Include="Template\img\featured-pic-1.jpeg" />
-    <Content Include="Template\img\featured-pic-2.jpeg" />
-    <Content Include="Template\img\featured-pic-3.jpeg" />
-    <Content Include="Template\img\gallery-1.jpg" />
-    <Content Include="Template\img\gallery-2.jpeg" />
-    <Content Include="Template\img\gallery-2.jpg" />
-    <Content Include="Template\img\gallery-3.jpg" />
-    <Content Include="Template\img\gallery-4.jpg" />
     <Content Include="Template\img\hero-bg.jpg" />
     <Content Include="Template\img\hero.jpg" />
-    <Content Include="Template\img\logo-white.png" />
-    <Content Include="Template\img\logo.png" />
-    <Content Include="Template\img\small-thumbnail-1.jpg" />
-    <Content Include="Template\img\small-thumbnail-2.jpg" />
-    <Content Include="Template\img\small-thumbnail-3.jpg" />
-    <Content Include="Template\img\template-mac.png" />
     <Content Include="Template\img\user.svg" />
     <Content Include="Template\index.html" />
     <Content Include="Template\js\front.js" />
@@ -478,6 +455,8 @@
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="private.config" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
