@@ -21,8 +21,6 @@
     <link rel="stylesheet" href="~/Template/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="~/Template/css/custom.css">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="~/Template/favicon.png">
 </head>
 <body>
     <header class="header">
@@ -57,20 +55,24 @@
                         <li class="nav-item">
                             <a href="@Url.Action("Index", "Blogs")" class="nav-link active ">Home</a>
                         </li>
-                        <li class="nav-item">
-                            @if (User.IsInRole("Admin") || User.IsInRole("Moderator") || User.IsInRole("Guest"))
+                        @using Microsoft.AspNet.Identity
+                        @if (Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-nav" }))
                             {
-                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
-                                {
-                                    @Html.AntiForgeryToken()
-                                    <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log Out</a>
-                                }
+                                @Html.AntiForgeryToken()
+                                <li class="nav-item">
+                                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "nav-link" })
+                                </li>
+                                <li class="nav-item"><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log Off</a></li>
                             }
-                            else
-                            {
+                        }
+                        else
+                        {
+                            <li class="nav-item">
                                 <a href="@Url.Action("Login", "Account")" class="nav-link ">Log-In</a>
-                            }
-                        </li>
+                            </li>
+                        }
                         <li class="nav-item">
                             @if (User.IsInRole("Admin"))
                             {
@@ -145,27 +147,27 @@
 
     <!-- Latest Posts -->
     @*<section class="latest-posts">
-        <div class="container">
-            <header>
-                <h2>Latest from the blog</h2>
-                <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </header>
-            <div class="row">
-                <div class="post col-md-4">
-                    <div class="post-thumbnail"><a href="post.html"><img src="~/Template/img/blog-1.jpg" alt="..." class="img-fluid"></a></div>
-                    <div class="post-details">
-                        <div class="post-meta d-flex justify-content-between">
-                            <div class="date">20 May | 2016</div>
-                            <div class="category"><a href="#">Business</a></div>
-                        </div><a href="post.html">
-                            <h3 class="h4">Ways to remember your important ideas</h3>
-                        </a>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+            <div class="container">
+                <header>
+                    <h2>Latest from the blog</h2>
+                    <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </header>
+                <div class="row">
+                    <div class="post col-md-4">
+                        <div class="post-thumbnail"><a href="post.html"><img src="~/Template/img/blog-1.jpg" alt="..." class="img-fluid"></a></div>
+                        <div class="post-details">
+                            <div class="post-meta d-flex justify-content-between">
+                                <div class="date">20 May | 2016</div>
+                                <div class="category"><a href="#">Business</a></div>
+                            </div><a href="post.html">
+                                <h3 class="h4">Ways to remember your important ideas</h3>
+                            </a>
+                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>*@
+        </section>*@
     <!-- Page Footer-->
     <footer class="main-footer">
         <div class="container">
@@ -190,29 +192,30 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-4">@* Update This! *@
-                    <div class="latest-posts">
-                        <a href="#" >
-                            <div class="post d-flex align-items-center">
-                                <div class="image"><img src="~/Template/img/blog-1.jpg" alt="..." class="img-fluid"></div>
-                                <div class="title"><strong>Lesson's in Having a Backup</strong><span class="date last-meta">January 20, 2020</span></div>
-                            </div>
-                        </a>
-                    </div>
+                <div class="col-md-4">
+                    @* Update This! *@
+                <div class="latest-posts">
+                    <a href="#">
+                        <div class="post d-flex align-items-center">
+                            <div class="image"><img src="~/Template/img/blog-1.jpg" alt="..." class="img-fluid"></div>
+                            <div class="title"><strong>Lesson's in Having a Backup</strong><span class="date last-meta">January 20, 2020</span></div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
-    </footer>
-    <!-- JavaScript files-->
-    <script src="~/Template/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Template/vendor/popper.js/umd/popper.min.js"></script>
-    <script src="~/Template/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/Template/vendor/jquery.cookie/jquery.cookie.js"></script>
-    <script src="~/Template/vendor/fancyapps2/fancybox/jquery.fancybox.min.js"></script>
-    <script src="~/Template/js/front.js"></script>
+    </div>
+</footer>
+<!-- JavaScript files-->
+<script src="~/Template/vendor/jquery/jquery.min.js"></script>
+<script src="~/Template/vendor/popper.js/umd/popper.min.js"></script>
+<script src="~/Template/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/Template/vendor/jquery.cookie/jquery.cookie.js"></script>
+<script src="~/Template/vendor/fancyapps2/fancybox/jquery.fancybox.min.js"></script>
+<script src="~/Template/js/front.js"></script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
 </body>
 </html>

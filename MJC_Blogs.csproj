@@ -360,7 +360,7 @@
     <Content Include="Template\img\blog-post-3.jpeg" />
     <Content Include="Template\img\blog-post-4.jpeg" />
     <Content Include="Template\img\divider-bg.jpg" />
-    <Content Include="Template\img\favicon.ico" />
+    <Content Include="Template\favicon.ico" />
     <Content Include="Template\img\featured-pic-1.jpeg" />
     <Content Include="Template\img\featured-pic-2.jpeg" />
     <Content Include="Template\img\featured-pic-3.jpeg" />

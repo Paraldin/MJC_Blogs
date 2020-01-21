@@ -772,7 +772,6 @@ section.featured-posts .post-footer {
   }
   section.featured-posts .image img {
     width: 100%;
-    height: auto !important;
   }
   section.featured-posts .text {
     -webkit-box-ordinal-group: 3;
