@@ -83,9 +83,6 @@ namespace MJC_Blogs.Controllers
 
             return View(blogs);
         }
-
-   
-            
                 
         
 
@@ -113,6 +110,7 @@ namespace MJC_Blogs.Controllers
         {
             if (ModelState.IsValid)
             {
+                var Snip = SnippetStripper.StripTagsCharArray(blogs.Body);
                 if (ImageUploadValidator.IsWebFriendlyImage(image))
                 {
                     var fileName = Path.GetFileName(image.FileName);
@@ -120,6 +118,7 @@ namespace MJC_Blogs.Controllers
                     blogs.MediaURL = "/Uploads/" + fileName;
                 }
 
+                blogs.Snippet = Snip;
                 db.Entry(blogs).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

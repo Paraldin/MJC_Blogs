@@ -22,10 +22,12 @@
             @foreach (var item in Model)
             {
                 string blogBody = item.Snippet;
-            string snippet = blogBody.Substring(0, blogBody.Length > 80 ? 80 : blogBody.Length);
-            counter++;
-                if (counter % 2 != 0)
+                string snippet = blogBody.Substring(0, blogBody.Length > 80 ? 80 : blogBody.Length);
+                if (item.Published || User.IsInRole("Admin"))
                 {
+                    counter++;
+                    if (counter % 2 != 0)
+                    {
                     <div class="row d-flex align-items-stretch">
                         <div class="text col-lg-7">
                             <div class="text-inner d-flex align-items-center">
@@ -52,14 +54,14 @@
                         <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" class="image col-lg-5" style="min-height:304px;"><img src="@item.MediaURL" alt="..." class="border-weirdify"></a>
                         }
                     </div>
-                    if (User.IsInRole("Admin"))
-                    {
+                        if (User.IsInRole("Admin"))
+                        {
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @style = "margin-left: 10px;" })
+                        }
                     }
-                }
-                else
-                {
+                    else
+                    {
     <div class="row d-flex align-items-stretch">
         @if (item.MediaURL != null)
         {
@@ -86,14 +88,16 @@
             </div>
         </div>
     </div>
-                    if (User.IsInRole("Admin"))
-                    {
+                        if (User.IsInRole("Admin"))
+                        {
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @style = "margin-left: 10px;" })
+                        }
                     }
-                }
+
+                } else { continue; }
             }
-        }
+
     </div>
 </section>
 <!-- Post        -->
