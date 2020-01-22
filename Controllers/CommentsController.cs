@@ -51,16 +51,18 @@ namespace MJC_Blogs.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,PostId,AuthorId,Body,Created")] Comments comments)
+        public ActionResult Create([Bind(Include = "Id,PostId,AuthorId,Body,Created")] Comments comments, int postId)
         {
             if (ModelState.IsValid)
             {
-               
+                comments.PostId = postId;
                 comments.AuthorId = User.Identity.GetUserId();
                 comments.Created = DateTimeOffset.Now;
                 db.Comment.Add(comments);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                var slug = db.Posts.FirstOrDefault(p => p.Id == postId).Slug;
+                return RedirectToAction("Details", "Blogs", new { Slug = slug});
             }
 
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comments.AuthorId);
