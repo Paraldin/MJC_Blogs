@@ -48,10 +48,11 @@ namespace MJC_Blogs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,PostId,AuthorId,Body,Created,Updated,UpdateReason")] Comments comments)
+        public ActionResult Create([Bind(Include = "Id,PostId,AuthorId,Body,Created")] Comments comments)
         {
             if (ModelState.IsValid)
             {
+                comments.Created = DateTimeOffset.Now;
                 db.Comment.Add(comments);
                 db.SaveChanges();
                 return RedirectToAction("Index");
