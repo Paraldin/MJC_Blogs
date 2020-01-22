@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MJC_Blogs.Models;
 
 namespace MJC_Blogs.Controllers
@@ -17,7 +18,7 @@ namespace MJC_Blogs.Controllers
         // GET: Comments
         public ActionResult Index()
         {
-            var comments = db.Comment.Include(c => c.Author);
+            var comments = db.Comment.Include(c => c.Author).Include(c => c.Post);
             return View(comments.ToList());
         }
 
@@ -40,18 +41,22 @@ namespace MJC_Blogs.Controllers
         public ActionResult Create()
         {
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName");
+            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title");
             return View();
         }
 
         // POST: Comments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,PostId,AuthorId,Body,Created")] Comments comments)
         {
             if (ModelState.IsValid)
             {
+               
+                comments.AuthorId = User.Identity.GetUserId();
                 comments.Created = DateTimeOffset.Now;
                 db.Comment.Add(comments);
                 db.SaveChanges();
@@ -59,6 +64,7 @@ namespace MJC_Blogs.Controllers
             }
 
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comments.AuthorId);
+            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comments.PostId);
             return View(comments);
         }
 
@@ -75,6 +81,7 @@ namespace MJC_Blogs.Controllers
                 return HttpNotFound();
             }
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comments.AuthorId);
+            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comments.PostId);
             return View(comments);
         }
 
@@ -92,6 +99,7 @@ namespace MJC_Blogs.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comments.AuthorId);
+            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comments.PostId);
             return View(comments);
         }
 

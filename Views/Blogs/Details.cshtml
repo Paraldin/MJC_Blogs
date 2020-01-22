@@ -34,46 +34,51 @@
                         
                         <div class="post-comments">
                             <header>
-                                <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
+                                <h3 class="h6">Post Comments<span class="no-of-comments">(@Model.Comments.Count)</span></h3>
                             </header>
+                            @foreach (var comment in Model.Comments)
+                            {
                             <div class="comment">
                                 <div class="comment-header d-flex justify-content-between">
                                     <div class="user d-flex align-items-center">
                                         <div class="image"><img src="/Template/img/user.svg" alt="..." class="img-fluid rounded-circle"></div>
-                                        <div class="title"><strong>Jabi Hernandiz</strong><span class="date">May 2016</span></div>
+                                        <div class="title"><strong>@comment.Author.DisplayName</strong><span class="date">@comment.Created</span></div>
                                     </div>
                                 </div>
                                 <div class="comment-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                                    <p>@comment.Body</p>
                                 </div>
+                            </div>                       
+                            }
                             </div>
-                            <div class="comment">
-                                <div class="comment-header d-flex justify-content-between">
-                                    <div class="user d-flex align-items-center">
-                                        <div class="image"><img src="/Template/img/user.svg" alt="..." class="img-fluid rounded-circle"></div>
-                                        <div class="title"><strong>Nikolas</strong><span class="date">May 2016</span></div>
-                                    </div>
-                                </div>
-                                <div class="comment-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                </div>
-                            </div>                           
-                        </div>
+
+                        @if (User.Identity.IsAuthenticated) {
                         <div class="add-comment">
                             <header>
                                 <h3 class="h6">Leave a reply</h3>
                             </header>
-                            <form action="#" class="commenting-form">
-                                <div class="row">
-                                    <div class="form-group col-md-12">
-                                        <textarea name="usercomment" id="usercomment" placeholder="Type your comment" class="form-control"></textarea>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <button type="submit" class="btn btn-secondary">Submit Comment</button>
-                                    </div>
-                                </div>
-                            </form>
+                        @using (Html.BeginForm("Create", "Comments", FormMethod.Post, new { @class = "commenting-form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                        <div class="row">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Id)
+                            <div class="form-group col-md-12">
+                                <textarea name="Body" id="Body" placeholder="Type your comment" class="form-control"></textarea>
+                                @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-secondary">Submit Comment</button>
+                            </div>
                         </div>
+                        }
+                          </div>
+                            }
+                        
+                        else
+                        {
+                            <a href="@Url.Action("Login", "Account", new { returnUrl = Url.Action("Details", "Blogs", new { Slug = Model.Slug })})"><div class="btn btn-outline-info" style="padding-top:20px; border-radius:4% !important;"><h3>Please Login/Register to Comment</h3></div></a>
+                        }
                     </div>
                 </div>
             </div>
