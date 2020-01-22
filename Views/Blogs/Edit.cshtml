@@ -12,7 +12,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.MediaURL)
-    @Html.HiddenFor(m => m.Slug)
+    @Html.HiddenFor(m => m.MediaURL)
     <div class="form-horizontal">
         <h4>Blogs</h4>
         <hr />
@@ -61,7 +61,7 @@
     </div>
 
 <div>
-    @Html.ActionLink("Back to Posts", "Index")
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
