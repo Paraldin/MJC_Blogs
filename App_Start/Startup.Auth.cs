@@ -54,15 +54,15 @@ namespace MJC_Blogs
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "2565349196921685",
+               appSecret: "a278fc9430877c50bca8f9562dd4ce7b");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "604318586118-thegl6uv1gmmue96pq23q0jv7vm4jn2m.apps.googleusercontent.com",
+                ClientSecret = "BEzaOf6ECFU9fbYew8cDV4N4"
+            });
         }
     }
 }
