@@ -65,8 +65,6 @@ namespace MJC_Blogs.Controllers
                 return RedirectToAction("Details", "Blogs", new { Slug = slug});
             }
 
-            ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comments.AuthorId);
-            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comments.PostId);
             return View(comments);
         }
 
@@ -82,8 +80,7 @@ namespace MJC_Blogs.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comments.AuthorId);
-            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comments.PostId);
+
             return View(comments);
         }
 

@@ -18,7 +18,7 @@ namespace MJC_Blogs.Controllers
 
         // GET: Blogs
         public ActionResult Index()
-        {
+        {            
             return View(db.Posts.ToList());
         }
 
