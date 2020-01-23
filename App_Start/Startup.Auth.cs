@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
+using Owin.Security.Providers.LinkedIn;
 using Owin;
 using MJC_Blogs.Models;
 
@@ -63,6 +64,8 @@ namespace MJC_Blogs
                 ClientId = "604318586118-thegl6uv1gmmue96pq23q0jv7vm4jn2m.apps.googleusercontent.com",
                 ClientSecret = "BEzaOf6ECFU9fbYew8cDV4N4"
             });
+
+            app.UseLinkedInAuthentication("78ry1x7eud1xqh", "JqTojFE8dJ8mlpl1");
         }
     }
 }
