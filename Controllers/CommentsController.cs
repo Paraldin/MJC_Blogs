@@ -11,6 +11,7 @@ using MJC_Blogs.Models;
 
 namespace MJC_Blogs.Controllers
 {
+    [RequireHttps]
     public class CommentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

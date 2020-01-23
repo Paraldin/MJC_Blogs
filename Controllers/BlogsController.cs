@@ -14,6 +14,7 @@ using PagedList.Mvc;
 
 namespace MJC_Blogs.Controllers
 {
+    [RequireHttps]
     public class BlogsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

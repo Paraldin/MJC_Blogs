@@ -13,6 +13,7 @@ using MJC_Blogs.Models;
 namespace MJC_Blogs.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
