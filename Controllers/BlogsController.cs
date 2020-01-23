@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using MJC_Blogs.Helpers;
 using MJC_Blogs.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MJC_Blogs.Controllers
 {
@@ -17,9 +19,32 @@ namespace MJC_Blogs.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Blogs
-        public ActionResult Index()
-        {            
-            return View(db.Posts.ToList());
+        public ActionResult Index(int? page, string searchStr)
+        {
+            ViewBag.Search = searchStr;
+            var blogList = IndexSearch(searchStr);
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(blogList.ToPagedList(pageNumber, pageSize));
+        }
+
+        public IQueryable<Blogs> IndexSearch(string searchStr)
+        {
+            IQueryable<Blogs> result = null;
+            if (searchStr != null)
+            {
+                result = db.Posts.AsQueryable();
+                result = result.Where(p => p.Title.Contains(searchStr) || p.Body.Contains(searchStr) || p.Comments.Any(c => c.Body.Contains(searchStr) || c.Author.DisplayName.Contains(searchStr)));
+            }
+            else
+            {
+                result = db.Posts.AsQueryable();
+            }
+
+            return result.OrderByDescending(p => p.Created);
+
         }
 
         // GET: Blogs/Details/5

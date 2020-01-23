@@ -1,4 +1,6 @@
-﻿@model IEnumerable<MJC_Blogs.Models.Blogs>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<MJC_Blogs.Models.Blogs>
 
 @{
     ViewBag.Title = "Index";
@@ -15,19 +17,19 @@
     </div>
 </section>
 
-        <!-- Post-->
+<!-- Post-->
 <section class="featured-posts no-padding-top">
     <div class="container">
         @{ int counter = 0; }
-            @foreach (var item in Model)
+        @foreach (var item in Model)
+        {
+            string blogBody = item.Snippet;
+            string snippet = blogBody.Substring(0, blogBody.Length > 80 ? 80 : blogBody.Length);
+            if (item.Published || User.IsInRole("Admin"))
             {
-                string blogBody = item.Snippet;
-                string snippet = blogBody.Substring(0, blogBody.Length > 80 ? 80 : blogBody.Length);
-                if (item.Published || User.IsInRole("Admin"))
+                counter++;
+                if (counter % 2 != 0)
                 {
-                    counter++;
-                    if (counter % 2 != 0)
-                    {
                     <div class="row d-flex align-items-stretch">
                         <div class="text col-lg-7">
                             <div class="text-inner d-flex align-items-center">
@@ -51,53 +53,54 @@
                         </div>
                         @if (item.MediaURL != null)
                         {
-                        <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" class="image col-lg-5" style="min-height:304px;"><img src="@item.MediaURL" alt="..." class="border-weirdify"></a>
+                            <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" class="image col-lg-5" style="min-height:304px;"><img src="@item.MediaURL" alt="..." class="border-weirdify"></a>
                         }
                     </div>
-                        if (User.IsInRole("Admin"))
-                        {
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @style = "margin-left: 10px;" })
-                        }
-                    }
-                    else
+                    if (User.IsInRole("Admin"))
                     {
-    <div class="row d-flex align-items-stretch">
-        @if (item.MediaURL != null)
-        {
-            <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" class="image col-lg-5" style="min-height:304px;"><img src="@item.MediaURL" alt="..." class="border-weirdify"></a>
-        }
-        <div class="text col-lg-7">
-            <div class="text-inner d-flex align-items-center">
-                <div class="content">
-                    <header class="post-header">
-                        <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })">
-                            <h2 class="h4">@item.Title</h2>
-                        </a>
-                    </header>
-                    <p>@Html.Raw(snippet)<a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" style="color:blue">...</a></p>
-                    <footer class="post-footer d-flex align-items-center">
-                        <a href="#" class="author d-flex align-items-center flex-wrap">
-                            <div class="avatar"><img src="~/Template/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                            <div class="title"><span>Mark Corum</span></div>
-                        </a>
-                        <div class="date"><i class="icon-clock"></i>@item.Created.ToString("MMMM dd, yyyy")</div>
-                        <div class="comments"><i class="icon-comment"></i>12</div>
-                    </footer>
-                </div>
-            </div>
-        </div>
-    </div>
-                        if (User.IsInRole("Admin"))
-                        {
                         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @style = "margin-left: 10px;" })
-                        }
                     }
+                }
+                else
+                {
+                    <div class="row d-flex align-items-stretch">
+                        @if (item.MediaURL != null)
+                        {
+                            <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" class="image col-lg-5" style="min-height:304px;"><img src="@item.MediaURL" alt="..." class="border-weirdify"></a>
+                        }
+                        <div class="text col-lg-7">
+                            <div class="text-inner d-flex align-items-center">
+                                <div class="content">
+                                    <header class="post-header">
+                                        <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })">
+                                            <h2 class="h4">@item.Title</h2>
+                                        </a>
+                                    </header>
+                                    <p>@Html.Raw(snippet)<a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" style="color:blue">...</a></p>
+                                    <footer class="post-footer d-flex align-items-center">
+                                        <a href="#" class="author d-flex align-items-center flex-wrap">
+                                            <div class="avatar"><img src="~/Template/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
+                                            <div class="title"><span>Mark Corum</span></div>
+                                        </a>
+                                        <div class="date"><i class="icon-clock"></i>@item.Created.ToString("MMMM dd, yyyy")</div>
+                                        <div class="comments"><i class="icon-comment"></i>12</div>
+                                    </footer>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @style = "margin-left: 10px;" })
+                    }
+                }
 
-                } else { continue; }
             }
-
+            else { continue; }
+        }
+        <p>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount <div>@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchStr = ViewBag.Search }))</div></p>
     </div>
 </section>
 <!-- Post        -->

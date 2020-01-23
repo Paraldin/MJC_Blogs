@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="~/Template/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="~/Template/css/custom.css">
+    <!--Pagination-->
+    <link rel="stylesheet" href="~/Content/PagedList.css" type="test/css" />
 </head>
 <body>
     <header class="header">
@@ -31,12 +33,13 @@
                     <div class="close-btn"><i class="icon-close"></i></div>
                     <div class="row d-flex justify-content-center">
                         <div class="col-md-8">
-                            <form action="#">
+                            @using (Html.BeginForm("Index", "Blogs", FormMethod.Get, htmlAttributes: new { @class = "form" }))
+                            {
                                 <div class="form-group">
-                                    <input type="search" name="search" id="search" placeholder="What are you looking for?">
-                                    <button type="submit" class="submit"><i class="icon-search-1"></i></button>
+                                    <input type="text" name="searchStr" id="searchStr" placeholder="What are you looking for?">
+                                    <button type="submit" id="searchStr" name="searchStr" class="submit"><i class="icon-search-1"></i></button>
                                 </div>
-                            </form>
+                            }
                         </div>
                     </div>
                 </div>
@@ -169,7 +172,7 @@
             </div>
         </section>*@
     <!-- Page Footer-->
-    <footer class="main-footer" style="bottom: 0px;;">
+    <footer class="main-footer" style="bottom: 0px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
