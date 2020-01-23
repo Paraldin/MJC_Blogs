@@ -65,7 +65,9 @@ namespace MJC_Blogs
                 ClientSecret = "BEzaOf6ECFU9fbYew8cDV4N4"
             });
 
-            app.UseLinkedInAuthentication("78ry1x7eud1xqh", "JqTojFE8dJ8mlpl1");
+            app.UseLinkedInAuthentication(
+                clientId: "78ry1x7eud1xqh", 
+                clientSecret: "JqTojFE8dJ8mlpl1");
         }
     }
 }
