@@ -55,12 +55,11 @@ namespace MJC_Blogs
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "2565349196921685",
+               appSecret: "a278fc9430877c50bca8f9562dd4ce7b");
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
                 ClientId = "604318586118-thegl6uv1gmmue96pq23q0jv7vm4jn2m.apps.googleusercontent.com",
@@ -70,18 +69,6 @@ namespace MJC_Blogs
             app.UseLinkedInAuthentication(
                 clientId: "78ry1x7eud1xqh", 
                 clientSecret: "JqTojFE8dJ8mlpl1");
-=======
-=======
->>>>>>> parent of e7893b2... Login G, F
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
-<<<<<<< HEAD
->>>>>>> parent of e7893b2... Login G, F
-=======
->>>>>>> parent of e7893b2... Login G, F
         }
     }
 }

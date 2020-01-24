@@ -657,7 +657,6 @@
     <Content Include="Template\vendor\jquery.cookie\component.json" />
     <Content Include="Template\vendor\jquery.cookie\cookie.jquery.json" />
     <Content Include="Template\vendor\popper.js\umd\poppper.js.flow" />
-    <Content Include="private.config" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Account\ConfirmationSent.cshtml" />
     <None Include="Views\Account\ResendEmailConfirmation.cshtml" />
@@ -666,6 +665,7 @@
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="private.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
