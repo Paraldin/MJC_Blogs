@@ -24,7 +24,7 @@ namespace MJC_Blogs.Controllers
         }
 
         // GET: Comments/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, string returnSlug)
         {
             if (id == null)
             {
@@ -115,6 +115,7 @@ namespace MJC_Blogs.Controllers
             {
                 return HttpNotFound();
             }
+            comments.PostSlug = db.Posts.FirstOrDefault(p => p.Id == comments.PostId).Slug;
             return View(comments);
         }
 

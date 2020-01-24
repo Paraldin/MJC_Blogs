@@ -15,8 +15,8 @@ namespace MJC_Blogs
 
             routes.MapRoute(
                 name: "CommentId",
-                url: "Comment/Det/{id}",
-                defaults: new { controller = "Blogs", action = "details", id = UrlParameter.Optional }
+                url: "CommentReor-24-Tyqle/Del/{id}",
+                defaults: new { controller = "Comments", action = "Delete", id = UrlParameter.Optional }
                 );
 
             routes.MapRoute(
