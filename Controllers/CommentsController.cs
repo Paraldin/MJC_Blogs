@@ -94,9 +94,11 @@ namespace MJC_Blogs.Controllers
         {
             if (ModelState.IsValid)
             {
+                comments.PostSlug = db.Posts.FirstOrDefault(p => p.Id == comments.PostId).Slug;
+                comments.Updated = DateTimeOffset.Now;
                 db.Entry(comments).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Blogs", new { slug = comments.PostSlug});
             }
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comments.AuthorId);
             ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comments.PostId);
