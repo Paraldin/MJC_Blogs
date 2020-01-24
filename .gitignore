@@ -353,3 +353,4 @@ MigrationBackup/
 .ionide/
 
 *.config
+MJC_Blogs\App_Start\Startup.Auth.cs
