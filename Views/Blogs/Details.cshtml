@@ -47,6 +47,10 @@
                                 </div>
                                 <div class="comment-body">
                                     <p>@comment.Body</p>
+                                    @if (User.Identity.Name == comment.Author.Email || User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                                    {
+                                     <a href="@Url.Action("Delete", "Comments")" class="btn btn-outline-primary">Delete</a>
+                                    }
                                 </div>
                             </div>                       
                             }

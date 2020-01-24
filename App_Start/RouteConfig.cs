@@ -14,6 +14,12 @@ namespace MJC_Blogs
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "CommentId",
+                url: "Comment/Det/{id}",
+                defaults: new { controller = "Blogs", action = "details", id = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
                 name: "NewSlug",
                 url: "BlogPost/Details/{slug}",
                 defaults: new { controller = "Blogs", action = "details", slug = UrlParameter.Optional }
