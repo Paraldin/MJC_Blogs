@@ -25,7 +25,7 @@
                             </a>
                             <div class="d-flex align-items-center flex-wrap">
                                 <div class="date"><i class="icon-clock"></i> @Model.Created.Day @Model.Created.ToString("MMMM"), @Model.Created.ToString("yyyy")</div>
-                                <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+                                <div class="comments meta-last"><i class="icon-comment"></i>@Model.Comments.Count</div>
                             </div>
                         </div>
                         <div class="post-body">
@@ -42,7 +42,7 @@
                                 <div class="comment-header d-flex justify-content-between">
                                     <div class="user d-flex align-items-center">
                                         <div class="image"><img src="/Template/img/user.svg" alt="..." class="img-fluid rounded-circle"></div>
-                                        <div class="title"><strong>@comment.Author.DisplayName</strong><span class="date">@comment.Created</span></div>
+                                        <div class="title"><strong>@comment.Author.DisplayName</strong><span class="date">@comment.Created.ToString("MMM dd, yyyy")</span></div>
                                     </div>
                                 </div>
                                 <div class="comment-body">

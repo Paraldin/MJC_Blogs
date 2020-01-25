@@ -132,7 +132,7 @@ namespace MJC_Blogs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Slug,Body,MediaURL,Published")] Blogs blogs, HttpPostedFileBase image)
+        public ActionResult Edit([Bind(Include = "Id,Title,Slug,Body,MediaURL,Published,Created")] Blogs blogs, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {

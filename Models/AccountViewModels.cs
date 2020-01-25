@@ -78,7 +78,7 @@ namespace MJC_Blogs.Models
         public string Password { get; set; }
 
         [Required]
-        [StringLength(16, ErrorMessage = "The Username must be at less than {1} characters long.", MinimumLength = 4)]
+        [StringLength(14, ErrorMessage = "The Username must be between {2} - {1} characters long", MinimumLength = 4)]
         [Display(Name ="DisplayName")]
         public string DisplayName { get; set; }
 

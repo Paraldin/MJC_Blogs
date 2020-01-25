@@ -127,9 +127,10 @@ namespace MJC_Blogs.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Comments comments = db.Comment.Find(id);
+            var postSlug = comments.Post.Slug;
             db.Comment.Remove(comments);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Blogs", new { slug = postSlug } );
         }
 
         protected override void Dispose(bool disposing)
