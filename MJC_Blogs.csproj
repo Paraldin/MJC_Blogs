@@ -557,9 +557,10 @@
     <Content Include="Template\icons-reference\icons-reference.html" />
     <Content Include="Template\icons-reference\styles.css" />
     <Content Include="Template\img\avatar-1.jpg" />
-    <Content Include="Template\img\bird-hero.png" />
+    <Content Include="Template\img\CommentsModel.png" />
     <Content Include="Template\img\hero-bg.jpg" />
     <Content Include="Template\img\hero.jpg" />
+    <Content Include="Template\img\hero.png" />
     <Content Include="Template\img\user.svg" />
     <Content Include="Template\index.html" />
     <Content Include="Template\js\front.js" />

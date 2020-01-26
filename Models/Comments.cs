@@ -14,8 +14,6 @@ namespace MJC_Blogs.Models
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset? Updated { get; set; }
         public string UpdateReason { get; set; }
-        public string PostSlug { get; set; }
-
         public virtual ApplicationUser Author { get; set; }
         public virtual Blogs Post { get; set; }
     }

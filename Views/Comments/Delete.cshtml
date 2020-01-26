@@ -36,7 +36,7 @@
 
                 <div class="form-actions no-color">
                     <input type="submit" value="Delete" class="btn btn-default" /> |
-                    @Html.ActionLink("Back to Post", "Details", "Blogs", new { slug = Model.PostSlug }, null)
+                    @Html.ActionLink("Back to Post", "Details", "Blogs", new { slug = Model.Post.Slug }, null)
                 </div>
             }
         </div>
