@@ -1,3 +1,14 @@
 .default-container {
     margin-top: 10px !important;
 }
+
+
+@media only screen and (min-width: 767px) {
+    .footer-recent-posts {
+        margin-top: -60px;
+        padding-bottom: 60px;
+    }
+    .logo-footer{
+        padding-right: 109px;
+    }
+}

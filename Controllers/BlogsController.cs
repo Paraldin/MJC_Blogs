@@ -70,6 +70,13 @@ namespace MJC_Blogs.Controllers
             return View();
         }
 
+        [ChildActionOnly]
+        public ActionResult RecentPosts()
+        {
+            var postModel = db.Posts.OrderByDescending(p => p.Created).Take(3);
+            return View(postModel);
+        }
+
         // POST: Blogs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

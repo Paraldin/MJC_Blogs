@@ -8,6 +8,10 @@ namespace MJC_Blogs.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required (ErrorMessage = "Please create a Username!")]
+        [Display(Name = "DisplayName")]
+        public string DisplayName { get; set; }
     }
 
     public class ExternalLoginListViewModel

@@ -58,7 +58,7 @@
                         <li class="nav-item">
                             <a href="@Url.Action("Index", "Blogs")" class="nav-link active ">Home</a>
                         </li>
-                        @{ Html.RenderPartial("_LoginPartial"); }
+                        @Html.Partial("_LoginPartial") 
                         <li class="nav-item">
                             @if (User.IsInRole("Admin"))
                             {
@@ -159,37 +159,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="logo">
-                        <h6 class="text-white">Mark's Coding Adventures</h6>
-                    </div>
+                    
                     <div class="contact-details">
-                        <p>Email: <a href="mailto:info@company.com">Info@Company.com</a></p>
+                        <p>Email: <a href="mailto:markcorumdev@gmail.com">MarkCorumDev@gmail.com</a></p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="menus d-flex">
-                        <ul class="list-unstyled">
-                            <li> <a href="#">My Account</a></li>
-                            <li> <a href="#">Add Listing</a></li>
-                        </ul>
-                        <ul class="list-unstyled">
-                            <li> <a href="#">FAQ</a></li>
-                            <li> <a href="#">Contact</a></li>
-                        </ul>
+                    <div class="logo logo-footer">
+                        <h3 class="text-white text-center">Mark's Coding Adventures</h3>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    @* Update This! *@
-                <div class="latest-posts">
-                    <a href="BlogPost/Details/lessons-in-having-a-backup">
-                        <div class="post d-flex align-items-center">
-                            <div class="image"><img src="https://cdn.pixabay.com/photo/2016/12/17/14/33/wave-1913559__340.jpg" alt="..." class="img-fluid"></div>
-                            <div class="title"><strong>Lesson's in Having a Backup</strong><span class="date last-meta">January 20, 2020</span></div>
+                    <div class="latest-posts footer-recent-posts">
+                        @Html.Action("RecentPosts", "Blogs")
                         </div>
-                    </a>
+                    </div>
                 </div>
-            </div>
-        </div>
     </div>
 </footer>
 <!-- JavaScript files-->

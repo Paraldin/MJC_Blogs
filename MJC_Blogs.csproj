@@ -543,7 +543,6 @@
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
     <Content Include="Template\blog.html" />
-    <Content Include="Template\credits.txt" />
     <Content Include="Template\css\custom.css" />
     <Content Include="Template\css\fontastic.css" />
     <Content Include="Template\css\style.blue.css" />
@@ -558,15 +557,13 @@
     <Content Include="Template\icons-reference\icons-reference.html" />
     <Content Include="Template\icons-reference\styles.css" />
     <Content Include="Template\img\avatar-1.jpg" />
-    <Content Include="Template\favicon.ico" />
+    <Content Include="Template\img\bird-hero.png" />
     <Content Include="Template\img\hero-bg.jpg" />
     <Content Include="Template\img\hero.jpg" />
     <Content Include="Template\img\user.svg" />
     <Content Include="Template\index.html" />
     <Content Include="Template\js\front.js" />
-    <Content Include="Template\license.txt" />
     <Content Include="Template\post.html" />
-    <Content Include="Template\readme.txt" />
     <Content Include="Template\vendor\fancyapps2\fancybox\jquery.fancybox.css" />
     <Content Include="Template\vendor\fancyapps2\fancybox\jquery.fancybox.js" />
     <Content Include="Template\vendor\fancyapps2\fancybox\jquery.fancybox.min.css" />
@@ -666,6 +663,7 @@
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="private.config" />
+    <Content Include="Views\Blogs\RecentPosts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

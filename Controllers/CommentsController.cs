@@ -98,7 +98,7 @@ namespace MJC_Blogs.Controllers
                 comments.Updated = DateTimeOffset.Now;
                 db.Entry(comments).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Details", "Blogs", new { slug = comments.Post});
+                return RedirectToAction("Details", "Blogs", new { slug = comments.PostSlug});
             }
             ViewBag.AuthorId = new SelectList(db.Users, "Id", "FirstName", comments.AuthorId);
             ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comments.PostId);

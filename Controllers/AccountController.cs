@@ -408,7 +408,7 @@ namespace MJC_Blogs.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, DisplayName = model.DisplayName, EmailConfirmed = true, };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

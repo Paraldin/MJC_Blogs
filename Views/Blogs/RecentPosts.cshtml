@@ -1,0 +1,13 @@
+﻿@{ Layout = null; }
+@model IQueryable<MJC_Blogs.Models.Blogs>
+
+@foreach (var item in Model)
+{
+
+    <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug})">
+        <div class="post d-flex align-items-center">
+            <div class="image"><img src="@item.MediaURL" alt="..." class="img-fluid"></div>
+            <div class="title text-white"><strong>@item.Title</strong><span class="date last-meta text-white">@item.Created.ToString("MMM dd, yyyy")</span></div>
+        </div>
+    </a>
+}
