@@ -13,6 +13,12 @@ namespace MJC_Blogs.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
         public string AvatarPhoto { get; set; }
+        public string Username { get; internal set; }
+    }
+
+    public class DisplayNameChange
+    {
+        public string DisplayName { get; set; }
     }
 
     public class ManageLoginsViewModel

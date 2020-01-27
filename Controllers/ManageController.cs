@@ -69,9 +69,11 @@ namespace MJC_Blogs.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+            var userInfo = new ApplicationDbContext().Users.FirstOrDefault(u => u.Id == userId);
             var model = new IndexViewModel
             {
-                AvatarPhoto = new ApplicationDbContext().Users.FirstOrDefault(u => u.Id == userId).Avatar,
+                AvatarPhoto = userInfo.Avatar,
+                Username = userInfo.DisplayName,
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
@@ -99,6 +101,21 @@ namespace MJC_Blogs.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Index", "Manage");
+        }
+
+        public ActionResult ChangeUsername()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangeUsername(DisplayNameChange display)
+        {
+            string userId = User.Identity.GetUserId();
+            var user = db.Users.FirstOrDefault(u => u.Id == userId);
+            user.DisplayName = display.DisplayName;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         //

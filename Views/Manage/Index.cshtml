@@ -15,6 +15,13 @@
                 <dd>
                     @User.Identity.Name
                 </dd>
+                <dt>Username:</dt>
+                <dd>
+                    <p>@Model.Username</p>
+                    [
+                        @Html.ActionLink("Change your Username", "ChangeUsername")
+                    ]
+                </dd>
                 <dt>Password:</dt>
                 <dd>
                     [
@@ -33,7 +40,7 @@
                     <div class="col-md-3">
                         <img src="@Model.AvatarPhoto" class="img-fluid border-weirdify" />
                         [
-                        @Html.ActionLink("Change Profile Picture","ChangeAvatar")
+                        @Html.ActionLink("Change Profile Picture", "ChangeAvatar")
                         ]
                     </div>
                 </dd>
@@ -96,7 +103,7 @@
                 </text>
             }
         }*@
-                
+
             </dl>
         </div>
     </div>

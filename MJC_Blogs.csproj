@@ -666,6 +666,7 @@
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="private.config" />
     <Content Include="Views\Blogs\RecentPosts.cshtml" />
+    <Content Include="Views\Manage\ChangeUsername.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

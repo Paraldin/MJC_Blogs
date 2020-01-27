@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MJC_Blogs.Helpers;
 using MJC_Blogs.Models;
 using PagedList;
@@ -82,12 +83,13 @@ namespace MJC_Blogs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Body,MediaURL,Published")] Blogs blogs, HttpPostedFileBase image)
+        public ActionResult Create([Bind(Include = "Id,Title,Body,MediaURL,Published,AuthorId")] Blogs blogs, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
                 var Slug = StringUtilities.URLFriendly(blogs.Title);
                 var Snip = SnippetStripper.StripTagsCharArray(blogs.Body);
+                var author = User.Identity.GetUserId();
                 if (String.IsNullOrWhiteSpace(Slug))
                 {
                     ModelState.AddModelError("Title", "Invalid title");
@@ -109,6 +111,7 @@ namespace MJC_Blogs.Controllers
                 blogs.Snippet = Snip;
                 blogs.Slug = Slug;
                 blogs.Created = DateTimeOffset.Now;
+                blogs.AuthorId = author;
                 db.Posts.Add(blogs);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -139,7 +142,7 @@ namespace MJC_Blogs.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Slug,Body,MediaURL,Published,Created")] Blogs blogs, HttpPostedFileBase image)
+        public ActionResult Edit([Bind(Include = "Id,Title,Slug,Body,MediaURL,Published,Created,AuthorId")] Blogs blogs, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
