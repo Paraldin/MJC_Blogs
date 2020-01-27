@@ -55,7 +55,7 @@
                 userManager.Create(new ApplicationUser
                 {
                     UserName = "rando@email.com",
-                    Email = "Rando@email.com",
+                    Email = "rando@email.com",
                     FirstName = "Rando",
                     LastName = "Mando",
                     DisplayName = "RandoMando"
