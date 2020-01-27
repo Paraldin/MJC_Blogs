@@ -42,8 +42,8 @@
                                     <p>@Html.Raw(snippet)<a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" style="color:blue">...</a></p>
                                     <footer class="post-footer d-flex align-items-center">
                                         <a href="#" class="author d-flex align-items-center flex-wrap">
-                                            <div class="avatar"><img src="~/Template/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                                            <div class="title"><span>Mark Corum</span></div>
+                                            <div class="avatar"><img src="@item.Author.Avatar" alt="..." class="img-fluid"></div>
+                                            <div class="title"><span>@item.Author.DisplayName</span></div>
                                         </a>
                                         <div class="date"><i class="icon-clock"></i> @item.Created.ToString("MMMM dd, yyyy")</div>
                                         <div class="comments"><i class="icon-comment"></i>@item.Comments.Count</div>
@@ -80,8 +80,8 @@
                                     <p>@Html.Raw(snippet)<a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" style="color:blue">...</a></p>
                                     <footer class="post-footer d-flex align-items-center">
                                         <a href="#" class="author d-flex align-items-center flex-wrap">
-                                            <div class="avatar"><img src="~/Template/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                                            <div class="title"><span>Mark Corum</span></div>
+                                            <div class="avatar"><img src="@item.Author.Avatar" alt="..." class="img-fluid"></div>
+                                            <div class="title"><span>@item.Author.DisplayName</span></div>
                                         </a>
                                         <div class="date"><i class="icon-clock"></i>@item.Created.ToString("MMMM dd, yyyy")</div>
                                         <div class="comments"><i class="icon-comment"></i>@item.Comments.Count</div>

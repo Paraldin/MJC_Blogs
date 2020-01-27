@@ -20,8 +20,8 @@
                         <h1>@Model.Title</h1>
                         <div class="post-footer d-flex align-items-center flex-column flex-sm-row">
                             <a href="#" class="author d-flex align-items-center flex-wrap">
-                                <div class="avatar"><img src="/Template/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                                <div class="title"><span>Mark Corum</span></div>
+                                <div class="avatar"><img src="@Model.Author.Avatar" alt="..." class="img-fluid"></div>
+                                <div class="title"><span>@Model.Author.DisplayName</span></div>
                             </a>
                         @if (User.IsInRole("Admin"))
                         {

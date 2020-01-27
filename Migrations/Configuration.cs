@@ -43,7 +43,7 @@
                     Email = "markjcorum@gmail.com",
                     FirstName = "Mark",
                     LastName = "Corum",
-                    DisplayName = "MC Hammer"
+                    DisplayName = "Mark C"
                 }, "Abc&123!");
             }
             var userId = userManager.FindByEmail("markjcorum@gmail.com").Id;
