@@ -46,7 +46,14 @@
                                 <div class="comment">
                                     <div class="comment-header d-flex justify-content-between">
                                         <div class="user d-flex align-items-center">
-                                            <div class="image"><img src="/Template/img/user.svg" alt="..." class="img-fluid rounded-circle"></div>
+                                            @if (comment.Author.Avatar == null)
+                                            {
+                                                <div class="image"><img src="/Template/img/user.svg" alt="..." class="img-fluid rounded-circle"></div>
+                                            }
+                                            else
+                                            {
+                                                <div class="image"><img src="@comment.Author.Avatar" alt="..." class="img-fluid rounded-circle"></div>
+                                            }
                                             <div class="title"><strong>@comment.Author.DisplayName</strong><span class="date">@comment.Created.ToString("MMM dd, yyyy")</span></div>
                                         </div>
                                     </div>

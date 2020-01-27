@@ -6,11 +6,11 @@
         <h2>@ViewBag.Title.</h2>
         <h3>Associate your @ViewBag.LoginProvider account.</h3>
 
-        @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "Multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             @Html.HiddenFor(m => m.Email)
-
+            
             <h4>Association Form</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -27,10 +27,16 @@
                 </div>
             </div>*@
             <div class="form-group">
-                @Html.LabelFor(m => m.DisplayName,"Username", new { @class = "col-md-2 control-label" })
+                @Html.LabelFor(m => m.DisplayName, "Username", new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
                     @Html.TextBoxFor(m => m.DisplayName, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.DisplayName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    <input name="image" type="file" class="form-control" id="fileUpload" />
                 </div>
             </div>
             <div class="form-group">
@@ -39,7 +45,7 @@
                 </div>
             </div>
         }
-        </div>
+    </div>
 
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")

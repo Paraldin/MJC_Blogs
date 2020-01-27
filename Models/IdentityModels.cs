@@ -14,6 +14,7 @@ namespace MJC_Blogs.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string DisplayName { get; set; }
+        public string Avatar { get; set; }
         public virtual ICollection<Comments> Comments { get; set; }
         public ApplicationUser()
         {

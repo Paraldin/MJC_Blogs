@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -6,6 +7,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using MJC_Blogs.Helpers;
 using MJC_Blogs.Models;
 
 namespace MJC_Blogs.Controllers
@@ -50,6 +52,8 @@ namespace MJC_Blogs.Controllers
                 _userManager = value;
             }
         }
+        public ApplicationDbContext db = new ApplicationDbContext();
+
 
         //
         // GET: /Manage/Index
@@ -67,6 +71,7 @@ namespace MJC_Blogs.Controllers
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
+                AvatarPhoto = new ApplicationDbContext().Users.FirstOrDefault(u => u.Id == userId).Avatar,
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
@@ -74,6 +79,26 @@ namespace MJC_Blogs.Controllers
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
             return View(model);
+        }
+
+        public ActionResult ChangeAvatar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangeAvatar(HttpPostedFileBase image)
+        {
+            string userId = User.Identity.GetUserId();
+            var user = db.Users.FirstOrDefault(u => u.Id == userId);
+            if (ImageUploadValidator.IsWebFriendlyImage(image))
+            {
+                var fileName = Path.GetFileName(image.FileName);
+                image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
+                user.Avatar = "/Uploads/" + fileName;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", "Manage");
         }
 
         //

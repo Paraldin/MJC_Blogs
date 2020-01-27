@@ -12,6 +12,9 @@ namespace MJC_Blogs.Models
         [Required (ErrorMessage = "Please create a Username!")]
         [Display(Name = "DisplayName")]
         public string DisplayName { get; set; }
+
+        [Display(Name ="Avatar")]
+        public string Avatar { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -85,6 +88,9 @@ namespace MJC_Blogs.Models
         [StringLength(14, ErrorMessage = "The Username must be between {2} - {1} characters long", MinimumLength = 4)]
         [Display(Name ="DisplayName")]
         public string DisplayName { get; set; }
+
+        [Display(Name ="Avatar")]
+        public string Avatar { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]

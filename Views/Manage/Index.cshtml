@@ -28,6 +28,15 @@
                     }
                     ]
                 </dd>
+                <dt>Profile Photo:</dt>
+                <dd>
+                    <div class="col-md-3">
+                        <img src="@Model.AvatarPhoto" class="img-fluid border-weirdify" />
+                        [
+                        @Html.ActionLink("Change Profile Picture","ChangeAvatar")
+                        ]
+                    </div>
+                </dd>
                 <dt>External Logins:</dt>
                 <dd>
                     @Model.Logins.Count [
@@ -87,7 +96,7 @@
                 </text>
             }
         }*@
-                </dd>
+                
             </dl>
         </div>
     </div>
