@@ -41,7 +41,7 @@
                                     </header>
                                     <p>@Html.Raw(snippet)<a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" style="color:blue">...</a></p>
                                     <footer class="post-footer d-flex align-items-center">
-                                        <a href="#" class="author d-flex align-items-center flex-wrap">
+                                        <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="@item.Author.Avatar" alt="..." class="img-fluid"></div>
                                             <div class="title"><span>@item.Author.DisplayName</span></div>
                                         </a>
@@ -79,7 +79,7 @@
                                     </header>
                                     <p>@Html.Raw(snippet)<a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" style="color:blue">...</a></p>
                                     <footer class="post-footer d-flex align-items-center">
-                                        <a href="#" class="author d-flex align-items-center flex-wrap">
+                                        <a href="@Url.Action("Details", "Blogs", new { slug = item.Slug })" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="@item.Author.Avatar" alt="..." class="img-fluid"></div>
                                             <div class="title"><span>@item.Author.DisplayName</span></div>
                                         </a>

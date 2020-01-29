@@ -52,7 +52,7 @@ namespace MJC_Blogs.Controllers
                 _userManager = value;
             }
         }
-        public ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
 
         //
@@ -69,7 +69,7 @@ namespace MJC_Blogs.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
-            var userInfo = new ApplicationDbContext().Users.FirstOrDefault(u => u.Id == userId);
+            var userInfo = db.Users.FirstOrDefault(u => u.Id == userId);
             var model = new IndexViewModel
             {
                 AvatarPhoto = userInfo.Avatar,
@@ -89,6 +89,7 @@ namespace MJC_Blogs.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ChangeAvatar(HttpPostedFileBase image)
         {
             string userId = User.Identity.GetUserId();
@@ -109,6 +110,7 @@ namespace MJC_Blogs.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ChangeUsername(DisplayNameChange display)
         {
             string userId = User.Identity.GetUserId();

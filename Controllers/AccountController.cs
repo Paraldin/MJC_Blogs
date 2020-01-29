@@ -101,9 +101,6 @@ namespace MJC_Blogs.Controllers
             {
                 return RedirectToAction("ConfirmationSent");
             }
-
-            
-            
         }
 
         //
